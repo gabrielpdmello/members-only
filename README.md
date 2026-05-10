@@ -1,4 +1,4 @@
-# Memebers-only
+# members-only
 This is a project from The Odin Project curriculum to learn authentication with Passport.js (with localStrategy).
 
 ## Run locally
