@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+    <main>
+        <div class="container">
+            <span class="container-header"><h2>New Message</h2></span>
+            <% if (locals.currentUser) {%>
+            <form action="/newmessage" method="POST">
+                <span class="form-row">
+                    <label for="message-text">Message:</label>
+                    <textarea name="message-text" id="message-text"><% if (typeof inputsError !== 'undefined') { %><%= inputsError.message %><% } %></textarea>
+                </span>
+                <input type="hidden" name="id" value="<%= currentUser.id %>">
+                <button class="btn--secondary" type="submit">Submit</button>
+            </form>
+            <%- include("partials/error.ejs") %>
+            <% } else { %>
+            <p>You must <a href="/login">login</a> first.</p>
+            <%}%>
+        </div>
+    </main>
+</body>
+
+</html>

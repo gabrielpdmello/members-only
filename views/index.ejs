@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+    <main>
+    <% if (locals.currentUser) {%>
+    <h2 class="username">Welcome, <%= currentUser.username %></h2>
+    <%}%>
+    <div class="container">
+        <span class="container-header">
+            <h2>Messages</h2>
+            <% if (locals.currentUser) {%>
+            <a href="/newmessage" class="btn--secondary">New Message</a>
+            <% } %>
+        </span>
+        
+        <% if (messages.length === 0) { %>
+        <p>No messages.</p>
+        <% } else { %>
+        <% messages.forEach((message)=> { %>
+        <article class="message">
+            <span class="message-header">
+                <span>by <%= message.username %></span>
+                <span>on <%= message.added.toLocaleString() %></span>
+            </span>
+            <p><%= message.message %></p>
+            <% if (locals.currentUser) {%>
+                <% if (locals.currentUser.admin) {%>
+                <form action="/delete-message" method="POST">
+                    <input type="hidden" name="messageId" value="<%= message.id %>">
+                    <button class="delete" type="submit" title="Delete item">&#10060</button>
+                </form>
+                <%}%>
+            <%}%>
+        </article>
+        <% }) %>
+      <% } %>
+    </div>
+    </main>
+</body>
+
+</html>

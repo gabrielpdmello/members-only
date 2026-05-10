@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+    <main>
+      <div class="container">
+        <span class="container-header"><h2>Admin</h2></span>
+        <% if (locals.currentUser) {%>
+          <% if (locals.currentUser.admin) {%>
+            <p>You're now an admin.</p>
+            <a href="/">Go to homepage</a>
+          <% } else {%>
+            <form action="/admin" method="post">
+              <span class="form-row">
+                <label for="admin">Password:</label>
+                <input type="password" id="admin" name="adminPassword">
+              </span>
+              <input type="hidden" name="id" value="<%= currentUser.id %>">
+              <button type="submit" class="btn--secondary">Submit</button>
+            <%- include("partials/error.ejs") %>
+            </form>
+          <% } %>
+        <% } else { %>
+          <p>You must <a href="/login">login</a> first.</p>
+        <%}%>
+      </div>
+    </main>
+</body>
+
+</html>

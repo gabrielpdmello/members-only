@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+    <div class="container">
+        <h2>Something broke!!</h2>
+        <div class="error-container">
+            <p><%= error %></p>
+        </div>
+        <p>It's very likely that this error is caused because the database is unavailable. 
+            If so, you can access this project's <a href="<%= repoUrl %>">repo</a> 
+            and follow the instructions there if you want to run this project in your machine.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+:root {
+    --primary-color: rgb(31, 31, 31);
+    --secondary-color: rgb(73, 0, 115);
+    --terciary-color: rgb(116, 8, 124);
+    --box-shadow: 0px 0px 20px 5px rgb(95, 95, 95);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--primary-color);
+    margin: 0;
+}
+
+a {
+    color: rgb(0, 187, 112)
+}
+
+h1 {
+    margin-left: 4rem;
+    color: white;
+}
+
+h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+header {
+    background-image: linear-gradient(to right, var(--secondary-color), var(--terciary-color));
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.6rem 4rem;
+    margin-bottom: 8rem;
+    color: white;
+}
+
+.username {
+    text-align: center;
+    color: white;
+}
+
+.btn, .btn--secondary {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 4rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 200ms;
+}
+
+.btn--secondary {
+    background-color: var(--secondary-color);
+}
+
+.btn:hover, .btn--secondary:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border: 10px double var(--terciary-color);
+    color: white;
+    box-shadow: var(--box-shadow);
+    background-color: rgb(43, 43, 43);
+}
+
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-bottom: 4rem;
+}
+
+.message {
+    position: relative;
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete {
+    opacity: 0;
+    transition: opacity 300ms;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: auto;
+    position: absolute;
+    right: 0;
+    bottom: 1.4rem;
+}
+
+.message:hover .delete,
+.message:focus-within .delete {
+    opacity: 1;
+}
+
+.form-row {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.form-row input, .form-row select, .form-row textarea {
+    width: 100%;
+    max-width: 50rem;
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 43.75rem) {
+    h1 {
+        margin: 0 0 1rem 0;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

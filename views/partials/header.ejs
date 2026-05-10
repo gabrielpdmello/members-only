@@ -1,0 +1,16 @@
+<header>
+      <h1><a href="/">Members-only</a></h1>
+      <% if (locals.currentUser) {%>
+      <span class="btn-container">
+        <a href="/logout" class="btn">Logout</a>
+        <% if (!currentUser.vip) {%>
+        <a href="/vip" class="btn">Become a VIP!</a>
+        <% } %>
+      </span>
+    <% } else { %>
+      <span class="btn-container">
+        <a href="/signup" class="btn">Signup</a>
+        <a href="/login" class="btn">Login</a>
+      </span>
+    <% } %>
+</header>
