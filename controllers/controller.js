@@ -6,6 +6,7 @@ require('dotenv').config();
 const validateSignup = [
     body('username').trim()
         .isLength({ min: 1, max: 30 }).withMessage('Username must be between 1 and 30 characters.')
+        .custom(value => !/\s/.test(value)).withMessage('Username must not contain spaces.')
         .custom(async value => {
             const profile = await db.getUsername(value);
             if (profile[0]) {
