@@ -1,4 +1,3 @@
-const messages = require("../../mini-message-board/db/local");
 const pool = require("./pool");
 
 async function createUser(username, password) {
