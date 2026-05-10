@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const { rows } = await pool.query(`SELECT * FROM Profile WHERE username = $1`, [username.toLowerCase()]);
+      const { rows } = await pool.query(`SELECT * FROM Profile WHERE username ilike $1`, [username]);
       const user = rows[0];
 
       if (!user) {

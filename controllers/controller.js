@@ -93,7 +93,7 @@ const postSignup = [
             });
         }
         try {
-        const username = req.body.username.toLowerCase();
+        const username = req.body.username;
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         db.createUser(username, hashedPassword)
         res.redirect("/");

@@ -7,7 +7,7 @@ async function createUser(username, password) {
 async function getUsername(username) {
   const result = await pool.query(`
     SELECT * FROM Profile
-    WHERE username = $1`, [username.toLowerCase()]);
+    WHERE username ilike $1`, [username]);
     const rows = result.rows;
   return rows
 }
